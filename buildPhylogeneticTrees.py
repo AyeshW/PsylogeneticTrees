@@ -13,31 +13,30 @@ def build_phylogeny_trees():
     for homologous_gene_sequence in os.listdir(path):
         in_file = path + homologous_gene_sequence
         out_file = out_path + homologous_gene_sequence
-        
-        if not os.path.exists(out_file):
-            clustalomega_cline = ClustalOmegaCommandline(infile=in_file, outfile=out_file, verbose=True, auto=True)
-            os.system(str(clustalomega_cline))
+    
+        clustalomega_cline = ClustalOmegaCommandline(infile=in_file, outfile=out_file, verbose=True, auto=True)
+        os.system(str(clustalomega_cline))
 
-            msa = AlignIO.read(out_file, 'fasta')
+        msa = AlignIO.read(out_file, 'fasta')
 
-            # Calculate the distance matrix
-            calculator = DistanceCalculator('identity')
-            dm = calculator.get_distance(msa)
+        # Calculate the distance matrix
+        calculator = DistanceCalculator('identity')
+        dm = calculator.get_distance(msa)
 
-            # Print the distance Matrix
-            print('\nDistance Matrix\n===================')
-            print(dm)
+        # Print the distance Matrix
+        print('\nDistance Matrix\n===================')
+        print(dm)
 
-            # Construct the phylogenetic tree using UPGMA algorithm
-            constructor = DistanceTreeConstructor()
-            tree = constructor.upgma(dm)
+        # Construct the phylogenetic tree using UPGMA algorithm
+        constructor = DistanceTreeConstructor()
+        tree = constructor.upgma(dm)
 
-            # Draw the phylogenetic tree
-            Phylo.draw(tree)
+        # Draw the phylogenetic tree
+        Phylo.draw(tree)
 
-            # Print the phylogenetic tree in the terminal
-            print('\nPhylogenetic Tree\n', homologous_gene_sequence)
-            Phylo.draw_ascii(tree)
-            Phylo.write([tree], 'out/trees/{}_tree.nex'.format(homologous_gene_sequence), 'nexus')
+        # Print the phylogenetic tree in the terminal
+        print('\nPhylogenetic Tree\n', homologous_gene_sequence)
+        Phylo.draw_ascii(tree)
+        Phylo.write([tree], 'out/trees/{}_tree.nex'.format(homologous_gene_sequence), 'nexus')
 
 build_phylogeny_trees()
