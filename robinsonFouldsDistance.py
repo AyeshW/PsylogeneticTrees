@@ -36,4 +36,3 @@ def calc_robinson_foulds_distance():
 
     with open('out/robinson_foulds_distances_between_trees.json', 'w') as file:
         json.dump(robinson_foulds_distances, file)
-
