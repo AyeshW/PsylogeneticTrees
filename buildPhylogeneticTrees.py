@@ -5,7 +5,7 @@ from Bio.Align.Applications import ClustalOmegaCommandline
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
 
-# STEP 4 : build phylogenetic trees
+#build phylogenetic trees
 def build_phylogeny_trees():
     path = "out/homologous_gene_sequences/"
     out_path = "out/aligned_homologous_gene_sequences/"
@@ -38,6 +38,3 @@ def build_phylogeny_trees():
         print('\nPhylogenetic Tree\n', homologous_gene_sequence)
         Phylo.draw_ascii(tree)
         Phylo.write([tree], 'out/phylogenetic_trees/{}_tree.nex'.format(homologous_gene_sequence), 'nexus')
-
-
-build_phylogeny_trees()

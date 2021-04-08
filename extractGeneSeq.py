@@ -35,10 +35,10 @@ def get_homologous_gene_sequences(protein_set, common_bacteria_set):
         with open('out/genomes.txt', 'a') as genomes_file:
             genomes_file.write(p + " - " + str(genomes_of_p))
 
-protein_set = ["porin",
-                   "LysR family transcriptional regulator",
-                   "helix-turn-helix domain-containing protein",
-                   "efflux transporter outer membrane subunit"]
+# protein_set = ["porin",
+#                    "LysR family transcriptional regulator",
+#                    "helix-turn-helix domain-containing protein",
+#                    "efflux transporter outer membrane subunit"]
 
 def get_common_bacteria_set(protein_set):
     with open('out/common_bacteria_set.txt', 'r') as f:
@@ -46,5 +46,5 @@ def get_common_bacteria_set(protein_set):
     return common_bacteria_set
 
 
-common_bacteria_set = get_common_bacteria_set(protein_set)
-get_homologous_gene_sequences(protein_set, common_bacteria_set)
+# common_bacteria_set = get_common_bacteria_set(protein_set)
+# get_homologous_gene_sequences(protein_set, common_bacteria_set)
