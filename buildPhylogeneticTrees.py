@@ -37,6 +37,7 @@ def build_phylogeny_trees():
         # Print the phylogenetic tree in the terminal
         print('\nPhylogenetic Tree\n', homologous_gene_sequence)
         Phylo.draw_ascii(tree)
-        Phylo.write([tree], 'out/trees/{}_tree.nex'.format(homologous_gene_sequence), 'nexus')
+        Phylo.write([tree], 'out/phylogenetic_trees/{}_tree.nex'.format(homologous_gene_sequence), 'nexus')
+
 
 build_phylogeny_trees()

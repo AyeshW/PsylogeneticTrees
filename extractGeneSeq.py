@@ -3,10 +3,12 @@ import pandas as pd
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 
+
 # get df of each species sheet
 def read_data(sheet_name, exel_file='protein_tables.xlsx', engine='openpyxl'):
     df = pd.read_excel(exel_file, sheet_name)
     return df
+
 
 # STEP 3 : extract gene sequence for each protein in protein_set and for each species in common_bacteria_set
 def get_homologous_gene_sequences(protein_set, common_bacteria_set):
